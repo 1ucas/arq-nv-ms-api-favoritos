@@ -1,34 +1,37 @@
-﻿using FavoritosApi.Models.DTOs;
-using FavoritosApi.Serivces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
+using FavoritosApi.Models.DTOs;
+using FavoritosApi.Models.Interfaces;
 
 namespace FavoritosApi.Controllers
 {
     [RoutePrefix("api/private/v1/favoritos")]
     public class FavoritosController : ApiController
     {
+        private readonly IFavoritosService _favoritosService;
+        public FavoritosController(IFavoritosService favoritosService)
+        {
+            _favoritosService = favoritosService;        
+        
+        }
+
         [HttpGet]
         [Route("usuario/{idUsuario}")]
         public List<FavoritoDTO> GetByUserId(int idUsuario)
         {
-            return new FavoritosService().ListarPorUsuario(idUsuario);
+            return _favoritosService.ListarPorUsuario(idUsuario);
         }
 
         [HttpPost]
         public void Post([FromBody]FavoritoDTO favorito)
         {
-            new FavoritosService().Inserir(favorito);
+             _favoritosService.Inserir(favorito);
         }
 
         [HttpDelete]
         public void Delete(FavoritoDTO favorito)
         {
-            new FavoritosService().Remover(favorito);
+            _favoritosService.Remover(favorito);
         }
     }
 }

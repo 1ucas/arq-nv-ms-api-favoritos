@@ -49,10 +49,6 @@
       <Project>{9CA51190-1BB2-422A-9E53-BCA16FBA2764}</Project>
       <Name>FavoritosApi.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FavoritosApi.Repos\FavoritosApi.Repos.csproj">
-      <Project>{FEC622E0-93C1-4741-96E7-028AB8D10C60}</Project>
-      <Name>FavoritosApi.Repos</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -46,10 +46,13 @@
   <ItemGroup>
     <Compile Include="DTOs\FavoritoDTO.cs" />
     <Compile Include="Entidades\FavoritoEntidade.cs" />
+    <Compile Include="Interfaces\IFavoritosService.cs" />
+    <Compile Include="Interfaces\IFavoritosRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

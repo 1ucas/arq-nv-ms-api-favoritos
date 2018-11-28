@@ -1,30 +1,32 @@
-﻿using FavoritosApi.Models.DTOs;
-using FavoritosApi.Repos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using FavoritosApi.Models.DTOs;
+using FavoritosApi.Models.Interfaces;
 
 namespace FavoritosApi.Serivces
 {
-    public class FavoritosService
+    public class FavoritosService : IFavoritosService
     {
+        private readonly IFavoritosRepo _favoritosRepo;
+        public FavoritosService(IFavoritosRepo favoritosRepo)
+        {
+            _favoritosRepo = favoritosRepo;
+        }
+
         public List<FavoritoDTO> ListarPorUsuario(int idUsuario)
         {
-            var listaFavoritos = new FavoritosRepo().ListarPorUsuario(idUsuario);
+            var listaFavoritos = _favoritosRepo.ListarPorUsuario(idUsuario);
             var listaFavoritosDTO = FavoritoDTO.From(listaFavoritos);
             return listaFavoritosDTO;
         }
 
         public void Inserir(FavoritoDTO favorito)
         {
-            new FavoritosRepo().Inserir(favorito.UsuarioId, favorito.LivroIsbn);
+            _favoritosRepo.Inserir(favorito.UsuarioId, favorito.LivroIsbn);
         }
 
         public void Remover(FavoritoDTO favorito)
         {
-            new FavoritosRepo().Remover(favorito.FavoritoId);
+            _favoritosRepo.Remover(favorito.FavoritoId);
         }
     }
 }

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using FavoritosApi.Injector;
+using SimpleInjector.Integration.WebApi;
 
 namespace FavoritosApi
 {
@@ -30,6 +32,10 @@ namespace FavoritosApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            // Injetor de dependências
+            InjectorDependency.Iniciar();
+            config.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(InjectorDependency.Container);
         }
     }
 }

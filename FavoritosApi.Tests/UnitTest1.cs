@@ -1,5 +1,9 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using FavoritosApi.Models.Entidades;
+using FavoritosApi.Models.Interfaces;
+using FavoritosApi.Serivces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace FavoritosApi.Tests
 {
@@ -9,6 +13,24 @@ namespace FavoritosApi.Tests
         [TestMethod]
         public void TestMethod1()
         {
+            int idUsuario = 1;
+            Mock<IFavoritosRepo> mock = new Mock<IFavoritosRepo>();
+            mock.Setup(m => m.ListarPorUsuario(idUsuario)).Returns(
+                new List<FavoritoEntidade>()
+                {
+                    new FavoritoEntidade()
+                    {
+                        LivroIsbn = 1,
+                        UsuarioId = 1
+                    }
+                }   
+            );
+            FavoritosService _favoritosService = new FavoritosService(mock.Object);
+
+            var result = _favoritosService.ListarPorUsuario(idUsuario);
+
+            Assert.AreEqual(result.Count, 1);
+
         }
     }
 }
