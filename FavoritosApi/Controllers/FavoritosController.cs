@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace FavoritosApi.Controllers
 {
-    [RoutePrefix("api/favoritos")]
+    [RoutePrefix("api/private/v1/favoritos")]
     public class FavoritosController : ApiController
     {
         [HttpGet]
