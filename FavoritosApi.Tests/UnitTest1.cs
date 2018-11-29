@@ -11,7 +11,7 @@ namespace FavoritosApi.Tests
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ListarPorUsuario_CaminhoFeliz_Favorito()
         {
             int idUsuario = 1;
             Mock<IFavoritosRepo> mock = new Mock<IFavoritosRepo>();
