@@ -14,7 +14,7 @@ namespace FavoritosApi.Repos
 
         public FavoritosRepo()
         {
-            string connectionString = "{connectionString}";
+            string connectionString = "mongodb://ms-favoritos:lucas-1234@ds115664.mlab.com:15664/favoritos-db";
             MongoClient client = new MongoClient(connectionString);
             DbFavoritos =  client.GetDatabase("favoritos-db");
             Favoritos = DbFavoritos.GetCollection<FavoritoEntidade>("favoritos");
